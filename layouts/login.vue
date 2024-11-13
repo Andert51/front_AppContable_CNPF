@@ -1,24 +1,24 @@
 <template>
   <v-app>
     <v-main>
-      <v-row align="center" justify="center" class="login">
+      <v-container fluid class="fill-height d-flex align-center justify-center">
         <Nuxt />
-      </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-export default {
-
-}
-
+export default {}
 </script>
 
 <style scoped>
-.login {
-    width: 100%;
-    height: 100vh;
-    background-color: #3282B8;
+.fill-height {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #3282B8;
+  overflow: hidden;
 }
 </style>
