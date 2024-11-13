@@ -7,9 +7,9 @@
         </v-card-title>
 
         <v-card-text>
-          <v-form>
+          <form>
             <v-text-field
-              v-model="username"
+              v-model="form.username"
               label="usuario"
               filled
               rounded
@@ -17,7 +17,7 @@
             />
 
             <v-text-field
-              v-model="password"
+              v-model="form.password"
               label="Password"
               type="password"
               filled
@@ -28,7 +28,7 @@
             <v-btn color="#0F4C75" block class="mt-4 py-3 logbtn" @click="login_method">
               Iniciar Sesión
             </v-btn>
-          </v-form>
+          </form>
 
           <div class="text-center mt-4">
             <span>No tienes cuenta. <a class="font-weight-medium" @click="signup_method">Regístrate</a></span>
@@ -46,14 +46,29 @@
 export default {
   data () {
     return {
-      username: '',
-      password: ''
+      form: {
+        username: '',
+        password: ''
+      },
+      errorMessage: ''
     }
   },
   methods: {
-    login_method () {
+    async login_method () {
       // eslint-disable-next-line no-console
       console.log('login')
+      try {
+        const response = await this.$auth.loginWith('local', {
+          data: this.form
+        })
+        // eslint-disable-next-line no-console
+        console.log('@res =>', response)
+        if (response.data.success) {
+          this.$router.push('/dashboard')
+        }
+      } catch (error) {
+        this.errorMessage = error
+      }
     },
     signup_method () {
       // eslint-disable-next-line no-console
