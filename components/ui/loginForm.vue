@@ -64,7 +64,7 @@ export default {
         // eslint-disable-next-line no-console
         console.log('@res =>', response)
         if (response.data.success) {
-          this.$router.push('/dashboard')
+          this.$router.push('/dashboard/home')
         }
       } catch (error) {
         this.errorMessage = error
@@ -73,6 +73,7 @@ export default {
     signup_method () {
       // eslint-disable-next-line no-console
       console.log('signup')
+      this.$router.push('/signup')
     }
   }
 }
