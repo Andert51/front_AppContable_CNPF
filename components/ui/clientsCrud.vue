@@ -58,55 +58,197 @@
       </v-data-table>
     </v-row>
     <v-dialog v-model="dialogAdd" width="600">
-      <v-card>
-        <v-card-title>
-          <span class="headline">Agregar Nuevo Contacto</span>
+      <v-card class="pa-5 rounded-card" width="600" color="white">
+        <v-card-title class="text-h5 text-center mb-4" style="color: #1B262C;">
+          Agregar Nuevo Contacto
         </v-card-title>
+
         <v-card-text>
           <v-form ref="form">
-            <v-text-field v-model="newClient.name" label="Name" required />
-            <v-text-field v-model="newClient.username" label="Username" required />
-            <v-text-field v-model="newClient.email" label="Email" required />
-            <v-text-field v-model="newClient.phone" label="Phone" required />
-            <v-text-field v-model="newClient.info" label="Info" />
-            <v-text-field v-model="newClient.password" label="Password" type="password" required />
-            <v-select v-model="newClient.role" :items="roles" label="Role" required />
-            <v-file-input v-model="newClient.image" label="Profile Picture" />
+            <v-row dense>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.name"
+                  label="Nombre"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.username"
+                  label="Usuario"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.email"
+                  label="Correo Electrónico"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.phone"
+                  label="Teléfono"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="newClient.info"
+                  label="Información Adicional"
+                  outlined
+                  dense
+                  class="custom-input"
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.password"
+                  label="Contraseña"
+                  type="password"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-select
+                  v-model="newClient.role"
+                  :items="roles"
+                  label="Rol"
+                  outlined
+                  dense
+                  class="custom-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12">
+                <v-file-input
+                  v-model="newClient.image"
+                  label="Foto de Perfil"
+                  outlined
+                  dense
+                  prepend-icon="mdi-camera"
+                  class="custom-input"
+                />
+              </v-col>
+            </v-row>
           </v-form>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="blue darken-1" text @click="dialogAdd = false">
+
+        <v-card-actions class="justify-center mt-4">
+          <v-btn color="red darken-1" class="custom-btn mx-2" @click="dialogAdd = false">
             Cancelar
           </v-btn>
-          <v-btn color="blue darken-1" text @click="addNewClient">
+          <v-btn color="blue darken-1" class="custom-btn mx-2" @click="addNewClient">
             Agregar
           </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
     <v-dialog v-model="dialogUpdate" width="600">
-      <v-card>
-        <v-card-title>
-          <span class="headline">Actualizar Contacto</span>
+      <v-card class="pa-6 rounded-update-card" width="650" color="grey lighten-4">
+        <v-card-title class="text-h5 text-center mb-5" style="color: #34495E;">
+          Actualizar Contacto
         </v-card-title>
+
         <v-card-text>
           <v-form ref="form">
-            <v-text-field v-model="selectedClient.name" label="Name" required />
-            <v-text-field v-model="selectedClient.username" label="Username" required />
-            <v-text-field v-model="selectedClient.email" label="Email" required />
-            <v-text-field v-model="selectedClient.phone" label="Phone" required />
-            <v-text-field v-model="selectedClient.info" label="Info" />
-            <v-select v-model="selectedClient.role" :items="roles" label="Role" required />
-            <v-file-input v-model="selectedClient.image" label="Profile Picture" />
+            <v-row dense>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.name"
+                  label="Nombre Completo"
+                  outlined
+                  dense
+                  class="update-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.username"
+                  label="Nombre de Usuario"
+                  outlined
+                  dense
+                  class="update-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.email"
+                  label="Correo Electrónico"
+                  outlined
+                  dense
+                  class="update-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.phone"
+                  label="Número de Teléfono"
+                  outlined
+                  dense
+                  class="update-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="selectedClient.info"
+                  label="Información Adicional"
+                  outlined
+                  dense
+                  class="update-input"
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-select
+                  v-model="selectedClient.role"
+                  :items="roles"
+                  label="Rol"
+                  outlined
+                  dense
+                  class="update-input"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-file-input
+                  v-model="selectedClient.image"
+                  label="Foto de Perfil"
+                  outlined
+                  dense
+                  prepend-icon="mdi-camera"
+                  class="update-input"
+                />
+              </v-col>
+            </v-row>
           </v-form>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="blue darken-1" text @click="dialogUpdate = false">
+
+        <v-card-actions class="d-flex justify-center mt-4">
+          <v-btn color="grey darken-1" class="cancel-btn mx-2" @click="dialogUpdate = false">
             Cancelar
           </v-btn>
-          <v-btn color="blue darken-1" text @click="updateClient">
+          <v-btn color="teal darken-1" class="update-btn mx-2" @click="updateClient">
             Actualizar
           </v-btn>
         </v-card-actions>
@@ -309,5 +451,24 @@ export default {
 }
 .styled-table .v-data-table__row:hover {
   background-color: #f5f5f5; /* Color de fondo al pasar el ratón */
+}
+
+.rounded-card {
+  border-radius: 16px;
+}
+
+.custom-input .v-input__control {
+  background-color: #F9FAFB !important;
+  border-radius: 8px !important;
+}
+
+.custom-btn {
+  color: white !important;
+  border-radius: 24px !important;
+  padding: 10px 20px;
+}
+
+.v-card-title {
+  font-weight: bold;
 }
 </style>
