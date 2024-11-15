@@ -97,7 +97,6 @@
             <v-text-field v-model="selectedClient.email" label="Email" required />
             <v-text-field v-model="selectedClient.phone" label="Phone" required />
             <v-text-field v-model="selectedClient.info" label="Info" />
-            <v-text-field v-model="selectedClient.password" label="Password" type="password" required />
             <v-select v-model="selectedClient.role" :items="roles" label="Role" required />
             <v-file-input v-model="selectedClient.image" label="Profile Picture" />
           </v-form>
