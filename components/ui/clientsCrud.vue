@@ -69,10 +69,11 @@
               <v-col cols="12" sm="6">
                 <v-text-field
                   v-model="newClient.name"
-                  label="Nombre"
+                  label="Nombre Completo"
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-account"
                   required
                 />
               </v-col>
@@ -83,6 +84,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-account-circle"
                   required
                 />
               </v-col>
@@ -93,6 +95,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-email"
                   required
                 />
               </v-col>
@@ -103,6 +106,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-phone"
                   required
                 />
               </v-col>
@@ -113,6 +117,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-information"
                 />
               </v-col>
               <v-col cols="12" sm="6">
@@ -123,6 +128,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-lock"
                   required
                 />
               </v-col>
@@ -134,6 +140,29 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-account-key"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.address"
+                  label="Dirección"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-home"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newClient.city"
+                  label="Ciudad"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-city"
                   required
                 />
               </v-col>
@@ -152,7 +181,7 @@
         </v-card-text>
 
         <v-card-actions class="justify-center mt-4">
-          <v-btn color="red darken-1" class="custom-btn mx-2" @click="dialogAdd = false">
+          <v-btn color="grey darken-1" class="cancel-btn mx-2" @click="dialogAdd = false">
             Cancelar
           </v-btn>
           <v-btn color="blue darken-1" class="custom-btn mx-2" @click="addNewClient">
@@ -177,6 +206,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-account"
                   required
                 />
               </v-col>
@@ -187,6 +217,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-account-circle"
                   required
                 />
               </v-col>
@@ -197,6 +228,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-email"
                   required
                 />
               </v-col>
@@ -207,6 +239,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-phone"
                   required
                 />
               </v-col>
@@ -217,6 +250,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-information"
                 />
               </v-col>
               <v-col cols="12" md="6">
@@ -227,6 +261,29 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-account-key"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.address"
+                  label="Dirección"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-home"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field
+                  v-model="selectedClient.city"
+                  label="Ciudad"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-city"
                   required
                 />
               </v-col>
@@ -256,33 +313,40 @@
     </v-dialog>
     <v-dialog
       v-model="dialogDelete"
-      width="400"
+      max-width="400"
       persistent
     >
-      <v-card>
-        <v-card-title>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            Eliminar Cliente
-          </v-row>
+      <v-card class="rounded-card">
+        <v-card-title class="text-h6 font-weight-bold text-center text-primary">
+          <v-icon color="red" class="mr-2">
+            mdi-delete
+          </v-icon>
+          Eliminar Cliente
         </v-card-title>
-        <v-card-text>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            Esta seguro de eliminar este cliente?
-          </v-row>
+
+        <v-card-text class="text-center text-body-1 text-gray-600">
+          <v-icon color="blue" class="mb-2" size="36">
+            mdi-alert-circle
+          </v-icon>
+          <p>¿Está seguro de que desea eliminar este Cliente? Esta acción no se puede deshacer.</p>
         </v-card-text>
-        <v-card-actions>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            <v-btn color="warning" @click="dialogDelete=false">
-              <span style="text-transform: none;">
-                Cancelar
-              </span>
-            </v-btn>
-            <v-btn color="red" @click="deleteClient">
-              <span style="text-transform: none;">
-                Eliminar
-              </span>
-            </v-btn>
-          </v-row>
+
+        <v-card-actions class="justify-center">
+          <v-btn
+            color="grey lighten-1"
+            class="text-none"
+            @click="dialogDelete = false"
+          >
+            Cancelar
+          </v-btn>
+          <v-btn
+            color="red"
+            dark
+            class="text-none"
+            @click="deleteClient"
+          >
+            Eliminar
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -295,48 +359,16 @@ export default {
     return {
       clients_data: [],
       headers: [
-        {
-          text: 'Nombre',
-          align: 'center',
-          sortable: true,
-          value: 'name'
-        },
-        {
-          text: 'Username',
-          align: 'center',
-          sortable: true,
-          value: 'username'
-        },
-        {
-          text: 'Tax ID',
-          align: 'center',
-          sortable: true,
-          value: 'id'
-        },
-        {
-          text: 'Telefono',
-          align: 'center',
-          sortable: true,
-          value: 'phone'
-        },
-        {
-          text: 'Email',
-          align: 'center',
-          sortable: true,
-          value: 'email'
-        },
-        {
-          text: 'Observaciones',
-          align: 'center',
-          sortable: true,
-          value: 'info'
-        },
-        {
-          text: 'Acciones',
-          align: 'center',
-          sortable: true,
-          value: 'actions'
-        }
+        { text: 'Nombre', align: 'center', sortable: true, value: 'name' },
+        { text: 'Username', align: 'center', sortable: true, value: 'username' },
+        { text: 'Tax ID', align: 'center', sortable: true, value: 'id' },
+        { text: 'Telefono', align: 'center', sortable: true, value: 'phone' },
+        { text: 'Email', align: 'center', sortable: true, value: 'email' },
+        { text: 'Observaciones', align: 'center', sortable: true, value: 'info' },
+        { text: 'Rol', align: 'center', sortable: true, value: 'role' },
+        { text: 'Address', align: 'center', sortable: true, value: 'address' },
+        { text: 'City', align: 'center', sortable: true, value: 'city' },
+        { text: 'Acciones', align: 'center', sortable: true, value: 'actions' }
       ],
       id: null,
       dialogDelete: false,
@@ -350,7 +382,9 @@ export default {
         info: '',
         password: '',
         role: '',
-        image: null
+        image: null,
+        address: '',
+        city: ''
       },
       selectedClient: {
         name: '',
@@ -360,7 +394,9 @@ export default {
         info: '',
         password: '',
         role: '',
-        image: null
+        image: null,
+        address: '',
+        city: ''
       },
       roles: ['Admin', 'User', 'Guest', 'SuperAdmin', 'SuperUser', 'SuperGuest']
     }
@@ -405,7 +441,9 @@ export default {
           info: '',
           password: '',
           role: '',
-          image: null
+          image: null,
+          address: '',
+          city: ''
         }
         this.dialogAdd = false
         await this.getEmployees()
@@ -447,27 +485,23 @@ export default {
   font-weight: bold;
 }
 .styled-table .v-data-table__cell {
-  border-bottom: 1px solid #ddd; /* Líneas finas entre filas */
+  border-bottom: 1px solid #ddd;
 }
 .styled-table .v-data-table__row:hover {
-  background-color: #f5f5f5; /* Color de fondo al pasar el ratón */
+  background-color: #f5f5f5;
 }
-
 .rounded-card {
   border-radius: 16px;
 }
-
 .custom-input .v-input__control {
   background-color: #F9FAFB !important;
   border-radius: 8px !important;
 }
-
 .custom-btn {
   color: white !important;
   border-radius: 24px !important;
   padding: 10px 20px;
 }
-
 .v-card-title {
   font-weight: bold;
 }

@@ -10,7 +10,7 @@
           <form>
             <v-text-field
               v-model="form.username"
-              label="usuario"
+              label="Nombre de usuario"
               filled
               rounded
               dense
@@ -18,7 +18,7 @@
 
             <v-text-field
               v-model="form.password"
-              label="Password"
+              label="Contraseña"
               type="password"
               filled
               rounded

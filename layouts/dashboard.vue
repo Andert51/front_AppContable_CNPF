@@ -62,7 +62,8 @@ export default {
       items: [
         { title: 'HOME', path: '/dashboard/home' },
         { title: 'CONTACTOS', path: '/dashboard/contactos' },
-        { title: 'VENTAS', path: '/dashboard/ventas' },
+        { title: 'PUNTO DE VENTAS', path: '/dashboard/ventas' },
+        { title: 'INGRESOS', path: '/dashboard/ingresos' },
         { title: 'INVENTARIOS', path: '/dashboard/inventarios' },
         { title: 'CONFIGURACION', path: '/dashboard/configuracion' }
       ],

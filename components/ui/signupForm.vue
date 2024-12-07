@@ -13,8 +13,8 @@
               dense
               rounded
               filled
-              label="Name"
-              placeholder="Write your name"
+              label="Nombre"
+              placeholder="Escribe tu nombre completo"
             />
           </v-col>
           <v-col cols="4">
@@ -23,8 +23,8 @@
               dense
               rounded
               filled
-              label="Username"
-              placeholder="Write your Username"
+              label="Usuario"
+              placeholder="Escoge tu nombre de usuario"
             />
           </v-col>
           <v-col cols="4">
@@ -34,7 +34,7 @@
               rounded
               filled
               label="Email"
-              placeholder="Write your email"
+              placeholder="Ingresa tu email"
             />
           </v-col>
         </v-row>
@@ -45,8 +45,28 @@
               dense
               rounded
               filled
-              label="Phone"
-              placeholder="Write your phone"
+              label="Telefono"
+              placeholder="Escribe tu telefono"
+            />
+          </v-col>
+          <v-col cols="4">
+            <v-text-field
+              v-model="user.address"
+              dense
+              rounded
+              filled
+              label="Direccion"
+              placeholder="Escribe tu direccion"
+            />
+          </v-col>
+          <v-col cols="4">
+            <v-text-field
+              v-model="user.city"
+              dense
+              rounded
+              filled
+              label="Ciudad"
+              placeholder="Escribe tu ciudad"
             />
           </v-col>
           <v-col cols="4">
@@ -56,8 +76,8 @@
               dense
               rounded
               filled
-              label="Role"
-              placeholder="Select your role"
+              label="Rol"
+              placeholder="Selecciona tu rol"
             />
           </v-col>
           <v-col cols="4">
@@ -66,8 +86,8 @@
               dense
               rounded
               filled
-              label="Profile Picture"
-              placeholder="Upload your profile picture"
+              label="Imagen de Perfil"
+              placeholder="Sube tu imagen de perfil"
             />
           </v-col>
         </v-row>
@@ -79,8 +99,8 @@
               type="password"
               rounded
               filled
-              label="Password"
-              placeholder="Write your password"
+              label="Contraseña"
+              placeholder="Escribe tu contraseña"
             />
           </v-col>
           <v-col cols="4">
@@ -90,8 +110,8 @@
               type="password"
               rounded
               filled
-              label="Confirm Password"
-              placeholder="Confirm your password"
+              label="Confirma tu contraseña"
+              placeholder="Confirma tu contraseña"
             />
           </v-col>
           <v-col cols="4">
@@ -100,8 +120,8 @@
               dense
               rounded
               filled
-              label="Info"
-              placeholder="Write your info"
+              label="Estado del cliente"
+              placeholder="Escribe el estado del cliente"
             />
           </v-col>
         </v-row>
@@ -115,9 +135,9 @@
 
     <v-card-actions>
       <v-row align="center" justify="center" class="ma-3">
-        <div class="text-center" style="font-size: 14px;">
-          Tienes cuenta?
-          <a class="font-weight-medium" style="color: #1B262C; cursor: pointer;" @click="gotoLogin">Inicia Sesión</a>
+        <div class="text-center" style="font-size: 14px; color:white;">
+          Ya tienes cuenta?
+          <a class="font-weight-medium" style="color: white; cursor: pointer;" @click="gotoLogin">Inicia Sesión</a>
         </div>
       </v-row>
     </v-card-actions>

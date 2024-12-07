@@ -73,6 +73,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-tag"
                   required
                 />
               </v-col>
@@ -83,6 +84,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-currency-usd"
                   required
                 />
               </v-col>
@@ -93,6 +95,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-text"
                   required
                 />
               </v-col>
@@ -103,6 +106,7 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-package-variant"
                   required
                 />
               </v-col>
@@ -113,6 +117,63 @@
                   outlined
                   dense
                   class="custom-input"
+                  prepend-icon="mdi-shape"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newProduct.brand"
+                  label="Marca"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-label"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newProduct.weight"
+                  label="Peso"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-weight"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newProduct.dimensions"
+                  label="Dimensiones"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-ruler"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newProduct.color"
+                  label="Color"
+                  outlined
+                  type="color"
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-palette"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="newProduct.material"
+                  label="Material"
+                  outlined
+                  dense
+                  class="custom-input"
+                  prepend-icon="mdi-texture"
                   required
                 />
               </v-col>
@@ -156,6 +217,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-tag"
                   required
                 />
               </v-col>
@@ -166,6 +228,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-currency-usd"
                   required
                 />
               </v-col>
@@ -176,6 +239,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-text"
                   required
                 />
               </v-col>
@@ -186,6 +250,7 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-package-variant"
                   required
                 />
               </v-col>
@@ -196,6 +261,63 @@
                   outlined
                   dense
                   class="update-input"
+                  prepend-icon="mdi-shape"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="selectedProduct.brand"
+                  label="Marca"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-label"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="selectedProduct.weight"
+                  label="Peso"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-weight"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="selectedProduct.dimensions"
+                  label="Dimensiones"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-ruler"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="selectedProduct.color"
+                  label="Color"
+                  outlined
+                  type="color"
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-palette"
+                  required
+                />
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-text-field
+                  v-model="selectedProduct.material"
+                  label="Material"
+                  outlined
+                  dense
+                  class="update-input"
+                  prepend-icon="mdi-texture"
                   required
                 />
               </v-col>
@@ -225,33 +347,43 @@
     </v-dialog>
     <v-dialog
       v-model="dialogDelete"
-      width="400"
+      max-width="400"
       persistent
     >
-      <v-card>
-        <v-card-title>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            Eliminar Producto
-          </v-row>
+      <v-card class="rounded-lg elevation-3">
+        <!-- Título del diálogo -->
+        <v-card-title class="text-h6 font-weight-bold text-center text-primary">
+          <v-icon color="red" class="mr-2">
+            mdi-delete
+          </v-icon>
+          Eliminar Producto
         </v-card-title>
-        <v-card-text>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            Esta seguro de eliminar este producto?
-          </v-row>
+
+        <!-- Mensaje del diálogo -->
+        <v-card-text class="text-center text-body-1 text-gray-600">
+          <v-icon color="blue" class="mb-2" size="36">
+            mdi-alert-circle
+          </v-icon>
+          <p>¿Está seguro de que desea eliminar este Producto? Esta acción no se puede deshacer.</p>
         </v-card-text>
-        <v-card-actions>
-          <v-row align="center" justify="center" class="pa-2 ma-2">
-            <v-btn color="warning" @click="dialogDelete=false">
-              <span style="text-transform: none;">
-                Cancelar
-              </span>
-            </v-btn>
-            <v-btn color="red" @click="deleteProduct">
-              <span style="text-transform: none;">
-                Eliminar
-              </span>
-            </v-btn>
-          </v-row>
+
+        <!-- Botones de acción -->
+        <v-card-actions class="justify-center">
+          <v-btn
+            color="grey lighten-1"
+            class="text-none"
+            @click="dialogDelete = false"
+          >
+            Cancelar
+          </v-btn>
+          <v-btn
+            color="red"
+            dark
+            class="text-none"
+            @click="deleteProduct"
+          >
+            Eliminar
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -269,6 +401,11 @@ export default {
         { text: 'Descripción', align: 'center', sortable: true, value: 'description' },
         { text: 'Stock', align: 'center', sortable: true, value: 'stock' },
         { text: 'Categoría', align: 'center', sortable: true, value: 'category' },
+        { text: 'Marca', align: 'center', sortable: true, value: 'brand' },
+        { text: 'Peso', align: 'center', sortable: true, value: 'weight' },
+        { text: 'Dimensiones', align: 'center', sortable: true, value: 'dimensions' },
+        { text: 'Color', align: 'center', sortable: true, value: 'color' },
+        { text: 'Material', align: 'center', sortable: true, value: 'material' },
         { text: 'Acciones', align: 'center', sortable: false, value: 'actions' }
       ],
       dialogAdd: false,
@@ -280,16 +417,25 @@ export default {
         description: '',
         stock: '',
         category: '',
-        image: null
+        image: null,
+        brand: '',
+        weight: '',
+        dimensions: '',
+        color: '',
+        material: ''
       },
       selectedProduct: {
-        id: '',
         name: '',
         price: '',
         description: '',
         stock: '',
         category: '',
-        image: null
+        image: null,
+        brand: '',
+        weight: '',
+        dimensions: '',
+        color: '',
+        material: ''
       },
       id: null
     }
@@ -328,7 +474,12 @@ export default {
           description: '',
           stock: '',
           category: '',
-          image: null
+          image: null,
+          brand: '',
+          weight: '',
+          dimensions: '',
+          color: '',
+          material: ''
         }
         this.dialogAdd = false
         await this.getProducts()
