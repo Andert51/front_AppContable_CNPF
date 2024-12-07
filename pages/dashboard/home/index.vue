@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" class="text-center">
         <h1>Dashboard Home</h1>
-        <p>Bienvenido a tu aplicacion de gestion de clientes e ingresos.</p>
+        <p>Bienvenido a tu aplicacion de gestion y contabilidad.</p>
       </v-col>
     </v-row>
     <v-row>
